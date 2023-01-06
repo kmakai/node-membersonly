@@ -13,7 +13,7 @@ PostSchema.virtual("url").get(function () {
   return `/post/${this._id}`;
 });
 
-postedDate.virtual("formattedDate").get(function () {
+PostSchema.virtual("formattedDate").get(function () {
   return DateTime.fromJSDate(this.postedDate).toLocaleString(
     DateTime.DATETIME_FULL
   );

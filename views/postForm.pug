@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+
+  h1 New Post 
+  
+  form(action="", method="post" class="postform") 
+    .form-field 
+      label(for="title") Post Title:
+      input(type="text" name="title" placeholder="Title for your post") 
+
+    .form-field 
+      label(for="body") Body:
+      textarea(name="body", cols="30", rows="10")  
+
+    button(type="submit") Submit

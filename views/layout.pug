@@ -4,4 +4,23 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    .container 
+      header 
+        nav
+          ul 
+            li 
+              a(href="/") Home  
+            li 
+              a(href="/register") register
+            li 
+              if currentUser 
+                a(href="/logout") Logout 
+              else 
+                a(href="/login") Login  
+            li 
+              a(href="/request-membership") Request membership
+            li 
+              if currentUser 
+                a(href="/post") New post
+      main 
+        block content 

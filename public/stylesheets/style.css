@@ -1,8 +1,93 @@
 body {
-  padding: 50px;
+  padding: 25px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main {
+  text-align: center;
+}
+
+.regform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 40%;
+  padding-left: 30%;
+}
+
+.form-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.err-ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: red;
+  padding-left: 30%;
+  gap: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-form .form-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.postform {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.postform .form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+input {
+  padding: 5px;
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  padding-left: 15%;
+}
+
+.posts .post {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
