@@ -24,7 +24,7 @@ html
             if currentUser 
               li 
                 a(href="/post") New post
-              if currentUser && !currentUser.isAdmin 
+              if currentUser && currentUser.isMember && !currentUser.isAdmin 
                 li 
                   a(href="/admin-request") Become Admin 
       main

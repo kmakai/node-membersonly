@@ -15,7 +15,9 @@ block content
         .post 
           h3 #{post.title}
           p #{post.body}
-          if post.creator && currentUser
+          if post.creator && (currentUser && currentUser.isMember)
             p Posted by: #{post.creator.firstName} - #{post.formattedDate}
           else 
             p Posted by: Hidden
+          if currentUser && currentUser.isAdmin
+            a(href=post.url+"/delete") Delete Post

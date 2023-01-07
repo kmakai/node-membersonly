@@ -67,6 +67,28 @@ router.post("/admin-request", (req, res, next) => {
   }
 });
 // Posts routers
+router.get("/post/:id/delete", (req, res) => {
+  Post.findById(req.params.id)
+    .populate("creator", "firstName")
+    .exec((err, post) => {
+      if (err) return next(err);
+
+      res.render("postDelForm", { post });
+    });
+});
+
+router.post("/post/:id/delete", (req, res) => {
+  Post.findById(req.params.id).exec((err, post) => {
+    if (err) return next(err);
+
+    if (post) {
+      Post.findByIdAndRemove(req.params.id, (err) => {
+        res.redirect("/");
+      });
+    }
+  });
+});
+
 router.get("/post", postController.postGetForm);
 
 router.post("/post", postController.postFormPost);

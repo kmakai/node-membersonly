@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+
+  h1 Delete Post 
+
+  h3 Are you sure you want to delete this post?
+
+  .post 
+    h3 #{post.title}
+    p #{post.body}
+    p Posted by: #{post.creator.firstName}
+
+  form(action="", method="post") 
+    input(type="hidden" name="postid")
+    button(type="submit") Delete
