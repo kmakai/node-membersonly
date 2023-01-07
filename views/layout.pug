@@ -5,22 +5,28 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     .container 
-      header 
+      aside  
         nav
           ul 
             li 
-              a(href="/") Home  
-            li 
-              a(href="/register") register
+              a(href="/") Home
+            if !currentUser  
+              li 
+                a(href="/register") register
             li 
               if currentUser 
                 a(href="/logout") Logout 
               else 
-                a(href="/login") Login  
-            li 
-              a(href="/request-membership") Request membership
-            li 
-              if currentUser 
+                a(href="/login") Login
+            if currentUser && !currentUser.isMember  
+              li 
+                a(href="/request-membership") Request membership
+            if currentUser 
+              li 
                 a(href="/post") New post
-      main 
+              if currentUser && !currentUser.isAdmin 
+                li 
+                  a(href="/admin-request") Become Admin 
+      main
         block content 
+    

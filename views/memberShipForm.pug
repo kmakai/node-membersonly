@@ -1,0 +1,9 @@
+extends layout 
+
+block content 
+  h1=title 
+  form(action="" method="post")
+    label(for="passcode") Enter Passcode: 
+    input(type="text" name="passcode")  
+    input(type="hidden", name="id" value=(currentUser.id))
+    button(type="submit") Submit 

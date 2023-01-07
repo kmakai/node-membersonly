@@ -4,6 +4,7 @@ const router = express.Router();
 const userController = require("../controllers/userControllers");
 const postController = require("../controllers/postControllers");
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -29,15 +30,42 @@ router.post("/login", userController.loginPost);
 
 router.get("/logout", userController.logOut);
 
-// Membership request routes
+// Membership request routes.
+// decided to leave this here to keep things simple.
 router.get("/request-membership", (req, res) => {
-  res.send("membership get to be implemented");
+  res.render("memberShipForm", { title: "Request Membership" });
 });
 
-router.post("request-membership", (req, res) => {
-  res.send("membership post to be implemented");
+router.post("/request-membership", (req, res, next) => {
+  if (req.body.passcode === process.env.SECRET_MEMBERSHIP) {
+    const newVal = { $set: { isMember: true } };
+    User.findByIdAndUpdate(req.body.id, newVal, (err, usrob) => {
+      if (err) return next(err);
+      res.redirect("/");
+    });
+  } else {
+    console.log("error!!!!");
+    res.redirect("/");
+  }
 });
 
+router.get("/admin-request", (req, res) => {
+  res.render("memberShipForm", { title: "Become Admin" });
+});
+
+router.post("/admin-request", (req, res, next) => {
+  if (req.body.passcode === process.env.SECRET_MEMBERSHIP) {
+    const newVal = { $set: { isAdmin: true } };
+    User.findByIdAndUpdate(req.body.id, newVal, (err, usrob) => {
+      if (err) return next(err);
+      console.log("success");
+      res.redirect("/");
+    });
+  } else {
+    console.log("error!!!!");
+    res.redirect("/");
+  }
+});
 // Posts routers
 router.get("/post", postController.postGetForm);
 

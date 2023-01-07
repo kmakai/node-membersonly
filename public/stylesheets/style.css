@@ -7,20 +7,29 @@ a {
   color: #00b7ff;
 }
 
-ul {
+nav {
+  margin-top: 25px;
+}
+
+nav ul {
   list-style: none;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  gap: 1rem;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
 }
 
 main {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .regform {
@@ -29,7 +38,6 @@ main {
   justify-content: center;
   gap: 20px;
   width: 40%;
-  padding-left: 30%;
 }
 
 .form-field {
@@ -43,7 +51,6 @@ main {
   flex-direction: column;
   align-items: flex-start;
   color: red;
-  padding-left: 30%;
   gap: 20px;
 }
 
@@ -81,13 +88,16 @@ input {
 }
 
 .posts {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  padding-left: 15%;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .posts .post {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  border: 1px solid grey;
+  padding: 10px;
+  border-radius: 5px;
 }
